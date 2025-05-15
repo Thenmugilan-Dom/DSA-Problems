@@ -13,16 +13,36 @@ class Solution {
     // Function to sort the array using bubble sort algorithm.
     public static void bubbleSort(int arr[]) {
         // code here
+        // int n = arr.length;
+        // for (int i = n - 1; i >= 0; i--) {
+        //     for (int j = 0; j <= i - 1; j++) {
+        //         if (arr[j] > arr[j + 1]) {
+        //             int temp = arr[j];
+        //             arr[j] = arr[j + 1];
+        //             arr[j + 1] = temp;
+        //         }
+        //     }
+        // }
+        //By using recusion
         int n = arr.length;
-        for (int i = n - 1; i >= 0; i--) {
-            for (int j = 0; j <= i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
+        
+       sort(arr, n);
+       
+        
+    }
+    public static void sort(int arr[],int n )
+    {
+        if(n == 1){
+            return;
+        }
+        for (int i = 0; i < n - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                int temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
             }
         }
+        sort(arr, n-1);
     }
 }
 
