@@ -42,16 +42,36 @@ class Main {
 class Solution {
     // Please change the array in-place
     public void insertionSort(int arr[]) {
-        // code here
         int n = arr.length;
-        for(int i=0; i<n; i++){
-            int j=i;
-            while(j>0 && arr[j-1] > arr[j]){
-                int temp = arr[j-1];
-                arr[j-1] = arr[j];
-                arr[j] = temp;
-                j--;
-            }
+        // normal insertionsort
+        // for(int i=0; i<n; i++){
+        //     int j=i;
+        //     while(j>0 && arr[j-1] > arr[j]){
+        //         int temp = arr[j-1];
+        //         arr[j-1] = arr[j];
+        //         arr[j] = temp;
+        //         j--;
+        //     }
+        // }
+        
+        // By using recusion insertionsort
+        sort(arr, n);
+    }
+    
+    public void sort(int arr[], int n){
+         if (n <= 1) {
+            return;
         }
+        
+        sort(arr, n - 1);
+        
+        int k = arr[n - 1];
+        int j = n - 2;
+        
+        while (j >= 0 && arr[j] > k) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = k;
     }
 }
