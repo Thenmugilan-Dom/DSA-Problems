@@ -1,11 +1,14 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        int a = 0;
-        int b = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
         for(int i : nums){
-            a = (a^i) & ~b;
-            b = (b^i) & ~a;
+            map.put(i, map.getOrDefault(i,0)+1);
         }
-        return a;
+        for(int i : map.keySet()){
+            if(map.get(i) == 1){
+                return i;
+            }
+        }
+        return 0;
     }
 }
